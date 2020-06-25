@@ -14,6 +14,7 @@ class BaseModel:
         update_ad = Last modification date
     Public instance methods:
     """
+
     def __init__(self):
         """Instance Initializer"""
         self.id = str(uuid4())
@@ -22,14 +23,15 @@ class BaseModel:
 
     def __str__(self):
         msg = "[{}] ({}) {}".format(BaseModel.__name__, self.id, self.__dict__)
-        print(msg)
+        return msg
 
     def save(self):
         """Save last time instance modification"""
         self.update_ad = datetime.today()
 
     def to_dict(self):
-        pass
+        dictionary = self.__dict__
+        return dictionary
 
 # if __name__ == "__main__":
 #     a = BaseModel()
