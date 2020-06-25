@@ -16,29 +16,25 @@ class BaseModel:
     """
 
     def __init__(self):
-        """Instance Initializer"""
+        """Initialize Object"""
         self.id = str(uuid4())
-        self.created_ad = datetime.now()
-        self.update_ad = datetime.now()
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
+        """Returns object representation (human readeable)"""
         msg = "[{}] ({}) {}".format(BaseModel.__name__, self.id, self.__dict__)
         return msg
 
     def save(self):
         """Save last time instance modification"""
-        self.update_ad = datetime.today()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
-        dictionary = self.__dict__
+        """returns a dictionary containing all keys/values of __dict__ of the instance"""
+        dictionary = self.__dict__.copy()
+        dictionary["__class__"] = BaseModel.__name__
+        dictionary["created_at"] = dictionary["created_at"].isoformat()
+        dictionary["updated_at"] = dictionary["updated_at"].isoformat()
         return dictionary
 
-# if __name__ == "__main__":
-#     a = BaseModel()
-#     print(a.id)
-#     print(a.update_ad)
-
-#     time.sleep(2)
-#     a.id = "45"
-#     a.save()
-    # print(a.update_ad)
