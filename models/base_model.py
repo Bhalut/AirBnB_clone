@@ -3,20 +3,28 @@
 """
 from uuid import uuid4
 from datetime import datetime
-import time
 
 
 class BaseModel:
     """BaseModel Class
     Public instance attributes:
-        id = Type string (unique id)
-        created_ad = Creation date
-        update_ad = Last modification date
+        id: Type string (unique id)
+        created_ad: Creation date
+        update_ad: Last modification date
     Public instance methods:
+        def save(): save last time object modification
+        def to_dict(): returns a dictionary containing all
+                       keys/values of __dict__ of the instance
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Initialize Object"""
+        data = [__class__, "created_at", "updated_at",
+                "id", "name", "my_number"]
+        for key, value in kwargs.items():
+            if key in data:
+                setattr(self, key, value)
+
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -31,10 +39,9 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """returns a dictionary containing all keys/values of __dict__ of the instance"""
+        """returns a dictionary containing all keys/values of the instance"""
         dictionary = self.__dict__.copy()
         dictionary["__class__"] = BaseModel.__name__
         dictionary["created_at"] = dictionary["created_at"].isoformat()
         dictionary["updated_at"] = dictionary["updated_at"].isoformat()
         return dictionary
-
