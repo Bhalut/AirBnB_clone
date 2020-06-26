@@ -23,11 +23,16 @@ class BaseModel:
                 "id", "name", "my_number"]
         for key, value in kwargs.items():
             if key in data:
-                setattr(self, key, value)
+                if key == "created_at" or key == "updated_at":
+                    dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, dt)
+                else:
+                    setattr(self, key, value)
 
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if not kwargs:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """Returns object representation (human readeable)"""
