@@ -21,8 +21,7 @@ class FileStorage:
 
     def all(self):
         """Returns the dictionary __objects"""
-        pass
-
+        return __objects
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id"""
@@ -35,4 +34,3 @@ class FileStorage:
     def reload(self):
         """Deserializes the JSON file to __objects"""
         pass
-
