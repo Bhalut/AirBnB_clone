@@ -14,8 +14,7 @@ class BaseModel:
         update_ad: Last modification date
     Public instance methods:
         def save(): save last time object modification
-        def to_dict(): returns a dictionary containing all
-                       keys/values of __dict__ of the instance
+        def to_dict(): returns a dictionary containing all instances
     """
 
     def __init__(self, *args, **kwargs):

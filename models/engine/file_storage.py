@@ -2,6 +2,8 @@
 """FileStorage Module
 """
 import json
+import os.path as path
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -29,32 +31,16 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to the JSON file"""
-        data = self.__to_json_string(
-            [obj.to_dictionary() for obj in FileStorage.__objects])
-        filename = FileStorage.__file_path
-        with open(filename, 'a') as file:
-            file.write(data)
+        data = {key: value.to_dict()
+                for key, value in FileStorage.__objects.items()}
+        with open(FileStorage.__file_path, 'w') as file:
+            json.dump(data, file)
 
     def reload(self):
         """Deserializes the JSON file to __objects"""
-        pass
-
-    def __to_json_string(list_dictionaries):
-        """Returns the JSON string representation of list_dictionaries
-        Parameters: list_dictionaries
-        """
-        return json.dumps(list_dictionaries)
-
-    def __from_json_string(self, json_string):
-        """Returns the list of the JSON string representation
-        Parameters:
-            json_string: string info JSON format
-        Raises:
-            TypeError: json_string must be a string
-        """
-        if json_string in [None, ""]:
-            return []
-        elif type(json_string) != str:
-            raise TypeError("json_string must be a string")
-        else:
-            return json.loads(json_string)
+        if path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+                for key, value in data.items():
+                    pass
+                    # FileStorage.__objects[key] = BaseModel(**value)
