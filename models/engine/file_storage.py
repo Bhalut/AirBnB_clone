@@ -29,7 +29,7 @@ class FileStorage:
 
     def create(self):
         from models.base_model import BaseModel
-        return {"BaseModel" : BaseModel}
+        return {"BaseModel": BaseModel}
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id"""
