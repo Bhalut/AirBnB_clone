@@ -3,14 +3,31 @@
 import cmd
 import sys
 from models import storage
+import json
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
+    def do_all(self, line):
+        """Prints all string representation of all instances based
+        or not on the class name
+        """
+        if line != "":
+            args = line.split(" ")
+            if storage.classes(args[0]):
+                print("** class doesn't exist **")
+            else:
+                l_obj = [str(value) for key, value in storage.all().items()
+                         if (type(value).__name__ == args[0])]
+                print(l_obj)
+        else:
+            l_obj = [str(value) for key, value in storage.all().items()]
+            print(l_obj)
+
     def do_create(self, line):
-        """Creates a new instance of BaseModel, saves it (to the JSON file)
-        and prints the id
+        """Creates a new instance of BaseModel, saves it (to the JSON file)\
+            and prints the id
         """
         if line in [None, ""]:
             print("** class name missing **")
@@ -63,10 +80,6 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-    def emptyline(self):
-        """Handles empty line"""
-        return
-
     def do_EOF(self, line):
         """Handles the End Of File"""
         return True
@@ -74,6 +87,13 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """Exit programm"""
         return True
+
+    def do_update(self, line):
+        pass
+
+    def emptyline(self):
+        """Handles empty line"""
+        return
 
     def help_quit(self):
         """Print quit instruction"""

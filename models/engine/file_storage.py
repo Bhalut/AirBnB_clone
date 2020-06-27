@@ -24,7 +24,7 @@ class FileStorage:
         return FileStorage.__objects
 
     def classes(self, line):
-        """Returns True if line is in [], otherwise False"""
+        """Returns True if line is in __objects type, otherwise False"""
         return True if line not in ["BaseModel"] else False
 
     def create(self):
@@ -34,6 +34,7 @@ class FileStorage:
         return {"BaseModel": BaseModel}
 
     def destroy(self, line):
+        """Destroy a specific object in __objects"""
         del FileStorage.__objects[line]
         self.save()
 
