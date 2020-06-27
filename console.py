@@ -7,6 +7,7 @@ import json
 
 
 class HBNBCommand(cmd.Cmd):
+    """AirBnb Clone"""
     prompt = "(hbnb) "
 
     def do_all(self, line):
@@ -89,7 +90,36 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_update(self, line):
-        pass
+        """Updates an instance based on the class name
+        and id by adding or updating attribute
+        (save the change into the JSON file)"""
+        args = line.split(" ")
+        # className = args[0]
+        # iD = args[1]
+        # attribute = args[2]
+        # attributeValue = args[3]
+        if line in [None, ""]:
+            print("** class name missing **")
+        elif storage.classes(args[0]):
+            print("** class doesn't exist **")
+        else:
+            if len(args) == 1:
+                print("** instance id missing **")
+                return
+            else:
+                key = "{}.{}".format(args[0], args[1])
+
+            if key in storage.all():
+                for k, v in storage.all().items():
+                    if k == args[2]:
+                        if args in [None, ""]:
+                            print("** value missing **")
+                        else:
+                            storage.all()[k] = args[3]
+                    else:
+                        print("** attribute name missing **")
+            else:
+                print("** no instance found **")
 
     def emptyline(self):
         """Handles empty line"""
@@ -98,6 +128,7 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         """Print quit instruction"""
         print("Quit command to exit the program\n")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
