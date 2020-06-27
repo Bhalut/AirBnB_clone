@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""FileStorage Module
-"""
+"""FileStorage Module"""
 import json
 import os.path as path
 
@@ -25,11 +24,18 @@ class FileStorage:
         return FileStorage.__objects
 
     def classes(self, line):
+        """Returns True if line is in [], otherwise False"""
         return True if line not in ["BaseModel"] else False
 
     def create(self):
+        """Return dictionary whit classes that can create"""
         from models.base_model import BaseModel
+
         return {"BaseModel": BaseModel}
+
+    def destroy(self, line):
+        del FileStorage.__objects[line]
+        self.save()
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id"""
