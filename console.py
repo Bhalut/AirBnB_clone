@@ -33,12 +33,16 @@ class HBNBCommand(cmd.Cmd):
         elif storage.classes(args[0]):
             print("** class doesn't exist **")
         else:
-            key = "{}.{}".format(args[0], args[1])
+            if len(args) == 1:
+                print("** instance id missing **")
+                return
+            else:
+                key = "{}.{}".format(args[0], args[1])
 
             if key in storage.all():
                 print(storage.all()[key])
             else:
-                print("** instance id missing **")
+                print("** no instance found **")
 
     def emptyline(self):
         """Handles empty line"""
