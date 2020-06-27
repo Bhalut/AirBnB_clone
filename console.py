@@ -36,7 +36,6 @@ class HBNBCommand(cmd.Cmd):
             key = "{}.{}".format(args[0], args[1])
 
             if key in storage.all():
-                # storage.show(args)
                 print(storage.all()[key])
             else:
                 print("** instance id missing **")
