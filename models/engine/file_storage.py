@@ -24,6 +24,13 @@ class FileStorage:
         """Returns the dictionary __objects"""
         return FileStorage.__objects
 
+    def classes(self, line):
+        return True if line not in ["BaseModel"] else False
+
+    def create(self):
+        from models.base_model import BaseModel
+        return {"BaseModel" : BaseModel}
+
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id"""
         FileStorage.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj

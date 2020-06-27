@@ -3,10 +3,23 @@
 """
 import cmd
 import sys
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
+
+    def do_create(self, line):
+        """Creates a new instance of BaseModel, saves it (to the JSON file)
+        and prints the id """
+        if line in [None, ""]:
+            print("** class name missing **")
+        elif storage.classes(line):
+            print("** class doesn't exist **")
+        else:
+            b = storage.create()[line]()
+            b.save()
+            print(b.id)
 
     def emptyline(self):
         """Handles empty line"""
