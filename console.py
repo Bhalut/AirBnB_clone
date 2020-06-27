@@ -21,6 +21,26 @@ class HBNBCommand(cmd.Cmd):
             b.save()
             print(b.id)
 
+    def do_show(self, line):
+        """do_show function
+
+        Prints the string representation of an instance
+        based on the class name and id
+        """
+        args = line.split(" ")
+        if line in [None, ""]:
+            print("** class name missing **")
+        elif storage.classes(args[0]):
+            print("** class doesn't exist **")
+        else:
+            key = "{}.{}".format(args[0], args[1])
+
+            if key in storage.all():
+                # storage.show(args)
+                print(storage.all()[key])
+            else:
+                print("** instance id missing **")
+
     def emptyline(self):
         """Handles empty line"""
         return
@@ -35,6 +55,7 @@ class HBNBCommand(cmd.Cmd):
 
     def help_quit(self):
         print("Quit command to exit the program\n")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
