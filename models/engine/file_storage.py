@@ -3,7 +3,6 @@
 """
 import json
 import os.path as path
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -38,9 +37,10 @@ class FileStorage:
 
     def reload(self):
         """Deserializes the JSON file to __objects"""
+        from models.base_model import BaseModel
+
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
                 for key, value in data.items():
-                    pass
-                    # FileStorage.__objects[key] = BaseModel(**value)
+                    FileStorage.__objects[key] = BaseModel(**value)
