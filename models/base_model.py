@@ -36,7 +36,7 @@ class BaseModel:
 
     def __str__(self):
         """Returns object representation (human readeable)"""
-        msg = "[{}] ({}) {}".format(BaseModel.__name__, self.id, self.__dict__)
+        msg = "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
         return msg
 
     def save(self):
