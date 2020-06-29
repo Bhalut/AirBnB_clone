@@ -18,7 +18,6 @@ class HBNBCommand(cmd.Cmd):
         """
         rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
         match = re.search(rex, line)
-
         if not match:
             l_obj = [str(value) for key, value in storage.all().items()]
             print(l_obj)
@@ -39,7 +38,6 @@ class HBNBCommand(cmd.Cmd):
         """
         rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
         match = re.search(rex, line)
-
         if not match:
             print("** class name missing **")
             return
@@ -76,28 +74,34 @@ class HBNBCommand(cmd.Cmd):
         if key not in storage.all():
             print("** no instance found **")
             return
+
         storage.destroy(key)
 
     def do_show(self, line):
         """Prints the string representation of an instance
         based on the class name and id
         """
-        args = line.split(" ")
-        if line in [None, ""]:
+        rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
+        match = re.search(rex, line)
+        if not match:
             print("** class name missing **")
-        elif storage.classes(args[0]):
-            print("** class doesn't exist **")
-        else:
-            if len(args) == 1:
-                print("** instance id missing **")
-                return
-            else:
-                key = "{}.{}".format(args[0], args[1])
+            return
 
-            if key in storage.all():
-                print(storage.all()[key])
-            else:
-                print("** no instance found **")
+        c_name = match.group(1)
+        c_id = match.group(2)
+        if c_name not in cls_list:
+            print("** class doesn't exist **")
+            return
+        if c_id is None:
+            print("** instance id missing **")
+            return
+
+        key = "{}.{}".format(c_name, c_id)
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+
+        print(storage.all()[key])
 
     def do_EOF(self, line):
         """Handles the End Of File"""
@@ -122,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
         c_id = match.group(2)
         c_attribute = match.group(3)
         c_value = match.group(4)
-        if storage.classes(c_name):
+        if c_name not in cls_list:
             print("** class doesn't exist **")
         elif c_id is None:
             print("** instance id missing **")
