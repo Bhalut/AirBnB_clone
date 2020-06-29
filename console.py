@@ -139,6 +139,14 @@ class HBNBCommand(cmd.Cmd):
             elif c_value is None:
                 print("** value missing **")
             else:
+                if not c_value.isdigit():
+                    try:
+                        c_value = float(c_value)
+                    except ValueError:
+                        c_value = c_value.strip('"\\')
+                else:
+                    c_value = int(c_value)
+
                 setattr(storage.all()[key], c_attribute, c_value)
                 storage.save()
 
