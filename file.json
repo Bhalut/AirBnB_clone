@@ -1,1 +1,11 @@
-{"BaseModel.10ee6a4c-5059-4b8b-9f05-0f152fd52163": {"id": "10ee6a4c-5059-4b8b-9f05-0f152fd52163", "created_at": "2020-06-29T01:02:33.677801", "updated_at": "2020-06-29T01:02:33.677818", "__class__": "BaseModel"}}
+{
+  "BaseModel.10ee6a4c-5059-4b8b-9f05-0f152fd52163": {
+    "myname": "Abdel",
+    "numberint": 24,
+    "updated_at": "2020-06-29T01:02:33.677818",
+    "number": 24.45,
+    "created_at": "2020-06-29T01:02:33.677801",
+    "id": "10ee6a4c-5059-4b8b-9f05-0f152fd52163",
+    "__class__": "BaseModel"
+  }
+}
