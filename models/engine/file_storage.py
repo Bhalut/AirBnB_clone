@@ -24,11 +24,24 @@ class FileStorage:
         """Returns the dictionary __objects"""
         return FileStorage.__objects
 
-    def create(self):
+    def dictionary(self):
         """Return dictionary whit classes that can create"""
+        from models.amenity import Amenity
         from models.base_model import BaseModel
+        from models.city import City
+        from models.place import Place
+        from models.review import Review
+        from models.state import State
+        from models.user import User
 
-        return {"BaseModel": BaseModel}
+        return {
+            "Amenity": Amenity,
+            "BaseModel": BaseModel,
+            "City": City,
+            "Place": Place,
+            "Review": Review,
+            "State": State,
+            "User": User}
 
     def destroy(self, line):
         """Destroy a specific object in __objects"""
@@ -56,12 +69,6 @@ class FileStorage:
                 data = json.load(file)
                 for key, value in data.items():
                     keys = key.split(".")
-                    if keys[0] in cls_dic().keys():
-                        FileStorage.__objects[key] = cls_dic()[
+                    if keys[0] in self.dictionary():
+                        FileStorage.__objects[key] = self.dictionary()[
                             keys[0]](**value)
-
-    def cls_dic(self):
-        from models.base_model import BaseModel
-        from models.user import User
-
-        return {"BaseModel": BaseModel, "User": User}

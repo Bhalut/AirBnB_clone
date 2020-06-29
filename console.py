@@ -3,7 +3,6 @@
 import cmd
 import sys
 from models import storage
-from models import cls_list
 import json
 import re
 
@@ -24,7 +23,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         c_name = match.group(1)
-        if c_name not in cls_list:
+        if c_name not in storage.dictionary():
             print("** class doesn't exist **")
             return
 
@@ -43,11 +42,11 @@ class HBNBCommand(cmd.Cmd):
             return
 
         c_name = match.group(1)
-        if c_name not in cls_list:
+        if c_name not in storage.dictionary():
             print("** class doesn't exist **")
             return
 
-        b = storage.create()[line]()
+        b = storage.dictionary()[line]()
         b.save()
         print(b.id)
 
@@ -63,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
 
         c_name = match.group(1)
         c_id = match.group(2)
-        if c_name not in cls_list:
+        if c_name not in storage.dictionary():
             print("** class doesn't exist **")
             return
         if c_id is None:
@@ -89,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
 
         c_name = match.group(1)
         c_id = match.group(2)
-        if c_name not in cls_list:
+        if c_name not in storage.dictionary():
             print("** class doesn't exist **")
             return
         if c_id is None:
@@ -126,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
         c_id = match.group(2)
         c_attribute = match.group(3)
         c_value = match.group(4)
-        if c_name not in cls_list:
+        if c_name not in storage.dictionary():
             print("** class doesn't exist **")
         elif c_id is None:
             print("** instance id missing **")
