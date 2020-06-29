@@ -2,6 +2,7 @@
 """FileStorage Module"""
 import json
 import os.path as path
+import datetime
 
 
 class FileStorage:
@@ -22,10 +23,6 @@ class FileStorage:
     def all(self):
         """Returns the dictionary __objects"""
         return FileStorage.__objects
-
-    def classes(self, line):
-        """Returns True if line is in __objects type, otherwise False"""
-        return True if line not in ["BaseModel"] else False
 
     def create(self):
         """Return dictionary whit classes that can create"""

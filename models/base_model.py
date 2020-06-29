@@ -36,8 +36,8 @@ class BaseModel:
 
     def __str__(self):
         """Returns object representation (human readeable)"""
-        msg = "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
-        return msg
+        m = "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
+        return m
 
     def save(self):
         """Save last time instance modification"""
