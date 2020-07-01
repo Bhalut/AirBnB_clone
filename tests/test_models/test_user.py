@@ -14,3 +14,18 @@ class TestUser(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/user.py'])
         self.assertEqual(result.total_errors, 0)
+
+    def test_base_model_instance(self):
+        my_user = User()
+        my_user.first_name = "Jerry"
+        my_user.last_name = "Mouse"
+        my_user.email = "jerry@holbertonshool.com"
+        my_user.password = "root"
+        self.assertEqual(my_user.first_name, "Jerry")
+        self.assertEqual(my_user.last_name, "Mouse")
+        self.assertEqual(my_user.email, "jerry@holbertonshool.com")
+        self.assertEqual(my_user.password, "root")
+
+
+if __name__ == '__main__':
+    unittest.main()
