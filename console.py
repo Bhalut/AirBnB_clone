@@ -23,9 +23,9 @@ class HBNBCommand(cmd.Cmd):
         message = "*** Unknown syntax in: {}".format(line)
         # User.show()
         if "." in line and "(" in line and ")" in line:
-            args = line.split(".")          #User show()
-            c_name = args[0]                #User
-            c_func = args[1].split("(")[0]  #show
+            args = line.split(".")
+            c_name = args[0]
+            c_func = args[1].split("(")[0]
             print(c_func)
             if c_func in ['all', 'show', 'count', 'update', 'destroy']:
                 return
