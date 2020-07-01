@@ -21,7 +21,6 @@ class HBNBCommand(cmd.Cmd):
         Otherwise print Unknown syntax
         """
         message = "*** Unknown syntax in: {}".format(line)
-        # User.show()
         if "." in line and "(" in line and ")" in line:
             args = line.split(".")
             c_name = args[0]
@@ -69,8 +68,6 @@ class HBNBCommand(cmd.Cmd):
 
         b = storage.dictionary()[line]()
         b.save()
-        storage.new(b)
-        storage.save()
         print(b.id)
 
     def do_destroy(self, line):
@@ -170,7 +167,7 @@ class HBNBCommand(cmd.Cmd):
                     c_value = int(c_value)
 
                 setattr(storage.all()[key], c_attribute, c_value)
-                storage.save()
+                storage.all()[key].save()
 
     def emptyline(self):
         """Handles empty line"""
@@ -220,7 +217,7 @@ class HBNBCommand(cmd.Cmd):
         msg3 = "(save the change into the JSON file)."
         msg4 = "Ex: $ update BaseModel 1234-1234-1234 email"
         msg5 = '"aibnb@holbertonschool.com"'
-        print("{} {} {}\n{} {}".format(msg1, msg2, msg3, msg4, msg5))
+        print("{} {} {}\n{} {}\n".format(msg1, msg2, msg3, msg4, msg5))
 
 
 if __name__ == '__main__':

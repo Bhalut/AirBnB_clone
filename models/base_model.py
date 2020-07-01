@@ -2,7 +2,7 @@
 """BaseModel Module"""
 from uuid import uuid4
 from datetime import datetime
-# from models import storage
+from models import storage
 
 
 class BaseModel:
@@ -15,10 +15,6 @@ class BaseModel:
         def save(): save last time object modification
         def to_dict(): returns a dictionary containing all instances
     """
-
-    def all(self):
-        """Print all objects"""
-        print(self.__str__)
 
     def __init__(self, *args, **kwargs):
         """Initialize Object"""
@@ -36,7 +32,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-        # storage.new(self)
+        storage.new(self)
 
     def __str__(self):
         """Returns object representation (human readeable)"""
@@ -46,12 +42,12 @@ class BaseModel:
     def save(self):
         """Save last time instance modification"""
         self.updated_at = datetime.now()
-        # storage.save()
+        storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values of the instance"""
         dictionary = self.__dict__.copy()
         dictionary["__class__"] = type(self).__name__
-        dictionary["created_at"] = dictionary["created_at"].isoformat()
-        dictionary["updated_at"] = dictionary["updated_at"].isoformat()
+        dictionary["created_at"] = datetime.isoformat(dictionary["created_at"])
+        dictionary["updated_at"] = datetime.isoformat(dictionary["updated_at"])
         return dictionary
