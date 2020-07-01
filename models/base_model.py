@@ -15,7 +15,9 @@ class BaseModel:
         def save(): save last time object modification
         def to_dict(): returns a dictionary containing all instances
     """
+
     def all(self):
+        """Print all objects"""
         print(self.__str__)
 
     def __init__(self, *args, **kwargs):
