@@ -1,0 +1,3 @@
+#!/bin/bash
+chmod u+x *.py
+pep8 *.py
