@@ -69,6 +69,8 @@ class HBNBCommand(cmd.Cmd):
 
         b = storage.dictionary()[line]()
         b.save()
+        storage.new(b)
+        storage.save()
         print(b.id)
 
     def do_destroy(self, line):
