@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
+import os.path as path
 import unittest
 import pep8
 
@@ -20,3 +21,13 @@ class TestBaseModel(unittest.TestCase):
         model.year = 27
         self.assertEqual(model.name, "Jerry")
         self.assertEqual(model.year, 27)
+
+    def test_base_model_save(self):
+        model = BaseModel()
+        model.city = "Medellin"
+        model.save()
+        self.assertTrue(path.exists("file.json"))
+
+
+if __name__ == '__main__':
+    unittest.main()
