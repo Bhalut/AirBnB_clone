@@ -13,3 +13,10 @@ class TestBaseModel(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/base_model.py'])
         self.assertEqual(result.total_errors, 0)
+
+    def test_base_model_instance(self):
+        model = BaseModel()
+        model.name = "Jerry"
+        model.year = 27
+        self.assertEqual(model.name, "Jerry")
+        self.assertEqual(model.year, 27)
