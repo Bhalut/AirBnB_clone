@@ -10,6 +10,7 @@ import unittest
 import pep8
 import os
 
+
 class TestAmenity(unittest.TestCase):
     """TestAmenity class
 

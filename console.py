@@ -18,17 +18,24 @@ class HBNBCommand(cmd.Cmd):
             - <class name>.destroy(<id>)
             - <class name>.update(<id>, <attribute name>, <attribute value>)
             - <class name>.update(<id>, <dictionary representation>)
+            replace of precmd(self, cmd)
         Otherwise print Unknown syntax
         """
-        message = "*** Unknown syntax in: {}".format(line)
         if "." in line and "(" in line and ")" in line:
             args = line.split(".")
             c_name = args[0]
-            c_func = args[1].split("(")[0]
-            print(c_func)
-            if c_func in ['all', 'show', 'count', 'update', 'destroy']:
+            c_func = args[1].split('(')[0]
+            if c_func in ["all", "count", "destroy", "show", "update"]:
+                arg = args[1].split('(')[1].replace(')', "").split(", ")
+                if c_func is 'update' and '{' in arg[1]:
+                    out = c_func + " " + c_name + " " + arg[0].replace(
+                        '"', "") + " " + ", ".join(
+                            i for i in args[1:]).replace("'", '"')
+                else:
+                    out = c_func + " " + c_name + " " + \
+                        " ".join(i.replace('"', "") for i in arg)
+                self.onecmd(out)
                 return
-
         print("*** Unknown syntax: {}".format(line))
 
     def do_all(self, line):
