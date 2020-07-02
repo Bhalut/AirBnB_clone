@@ -70,6 +70,26 @@ EOF  all  create  destroy  help  quit  show  update
 $
 ```
 
+```bash
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+
+(hbnb) create User
+67fd7b94-e22f-4ae5-901f-5fbdf3f57034
+(hbnb) show User 67fd7b94-e22f-4ae5-901f-5fbdf3f57034
+[User] (67fd7b94-e22f-4ae5-901f-5fbdf3f57034) {'id': '67fd7b94-e22f-4ae5-901f-5fbdf3f57034', 'created_at': datetime.datetime(2020, 7, 2, 3, 37, 29, 103113), 'updated_at': datetime.datetime(2020, 7, 2, 3, 37, 29, 103153)}
+(hbnb) all
+["[User] (d46de648-6a1b-41d1-b157-412f3444d021) {'id': 'd46de648-6a1b-41d1-b157-412f3444d021', 'created_at': datetime.datetime(2020, 7, 2, 3, 36, 44, 409077), 'updated_at': datetime.datetime(2020, 7, 2, 3, 36, 44, 409107)}", "[User] (67fd7b94-e22f-4ae5-901f-5fbdf3f57034) {'id': '67fd7b94-e22f-4ae5-901f-5fbdf3f57034', 'created_at': datetime.datetime(2020, 7, 2, 3, 37, 29, 103113), 'updated_at': datetime.datetime(2020, 7, 2, 3, 37, 29, 103153)}"]
+(hbnb) update User 67fd7b94-e22f-4ae5-901f-5fbdf3f57034 greeting "Hello"
+(hbnb) show User 67fd7b94-e22f-4ae5-901f-5fbdf3f57034
+[User] (67fd7b94-e22f-4ae5-901f-5fbdf3f57034) {'created_at': datetime.datetime(2020, 7, 2, 3, 37, 29, 103113), 'greeting': 'Hello', 'id': '67fd7b94-e22f-4ae5-901f-5fbdf3f57034', 'updated_at': datetime.datetime(2020, 7, 2, 3, 39, 16, 797322)}
+(hbnb) quit
+```
+
 ![Architecture](https://i.imgur.com/xhDYcWv.png)
 
 ## Authors
