@@ -17,10 +17,35 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(result.total_errors, 0)
 
     def test_base_model_init(self):
+        """test_base_model_init test
+
+        Test init class
+        """
         my_model = BaseModel()
         self.assertIsInstance(my_model, BaseModel)
+        self.assertEqual(dir(my_model), dir(BaseModel()))
+
+    def test_base_model_str(self):
+        """test_base_model_str test
+
+        Test str of class
+        """
+        my_model = BaseModel()
+        self.assertTrue(type(str(my_model)) is str)
+
+    def test_base_model_to_dict(self):
+        """test_base_model_to_dict test
+
+        Test to_dict method
+        """
+        my_model = BaseModel()
+        self.assertTrue(type(my_model.to_dict()) is dict)
 
     def test_base_model_instance(self):
+        """test_base_model_instance test
+
+        Test Instance class
+        """
         model = BaseModel()
         model.name = "Jerry"
         model.year = 27
@@ -28,12 +53,20 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(model.year, 27)
 
     def test_base_model_save(self):
+        """test_base_model_save test
+
+        Test save method
+        """
         model = BaseModel()
         model.city = "Medellin"
         model.save()
         self.assertTrue(path.exists("file.json"))
 
     def test_base_model_dict(self):
+        """test_base_model_dict test
+
+        Test dict class
+        """
         my_model = BaseModel()
         my_model.name = "Jerry"
         my_model.number = 89
