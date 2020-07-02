@@ -1,6 +1,6 @@
 # AirBnB clone
 
-![AirBnB clone images](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20200701%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200701T231234Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=cacc2007771b63ea1b6bbc717263abf3f27d5d38f29747913e71376601d55a74)
+![AirBnB clone images](https://i.imgur.com/78Nj81H.png)
 
 ## General
 - How to create a Python package
