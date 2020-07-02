@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+""" test_base_model.py
+
+    Test of base_model
+"""
+
 from models.base_model import BaseModel
 from datetime import datetime
 import os.path as path
@@ -7,6 +12,11 @@ import pep8
 
 
 class TestBaseModel(unittest.TestCase):
+    """TestBaseModel Class
+
+    Test cases of BaseModel
+    """
+
     def test_base_model_pep8(self):
         """test_base_pep8 test
 
