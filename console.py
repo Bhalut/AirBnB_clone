@@ -51,6 +51,11 @@ class HBNBCommand(cmd.Cmd):
                  if (c_name == type(value).__name__)]
         print(l_obj)
 
+    def do_count(self, line):
+        """Prints the count of instances of a specific type"""
+        print(len([str(obj) for key, obj in storage.all().items()
+                   if type(obj).__name__ == line]))
+
     def do_create(self, line):
         """Creates a new instance, saves it (to the JSON file)
            and prints the id
