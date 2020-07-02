@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+""" test_user.py
+
+    test cases
+"""
 from models.user import User
 import os.path as path
 import unittest
@@ -6,16 +10,25 @@ import pep8
 
 
 class TestUser(unittest.TestCase):
+    """TestUser class
+
+    Test cases
+    """
+
     def test_user_pep8(self):
         """test_base_pep8 test
 
-        Test pep8 for base_model.py file
+        Test pep8 for user.py file
         """
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/user.py'])
         self.assertEqual(result.total_errors, 0)
 
     def test_user_instance(self):
+        """test_user_instance test
+
+        Test instance class
+        """
         my_user = User()
         my_user.first_name = "Jerry"
         my_user.last_name = "Mouse"
@@ -27,6 +40,10 @@ class TestUser(unittest.TestCase):
         self.assertEqual(my_user.password, "root")
 
     def test_user_save(self):
+        """test_user_save test
+
+        Test save method
+        """
         my_user = User()
         my_user.first_name = "Jerry"
         my_user.last_name = "Mouse"
