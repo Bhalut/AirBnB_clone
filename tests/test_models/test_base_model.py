@@ -34,6 +34,7 @@ class TestBaseModel(unittest.TestCase):
         my_model = BaseModel()
         self.assertIsInstance(my_model, BaseModel)
         self.assertEqual(dir(my_model), dir(BaseModel()))
+        self.assertEqual(type(my_model.id), str)
 
     def test_base_model_str(self):
         """test_base_model_str test
@@ -42,6 +43,7 @@ class TestBaseModel(unittest.TestCase):
         """
         my_model = BaseModel()
         self.assertTrue(type(str(my_model)) is str)
+        self.assertNotEqual(my_model.created_at, my_model.updated_at)
 
     def test_base_model_to_dict(self):
         """test_base_model_to_dict test
