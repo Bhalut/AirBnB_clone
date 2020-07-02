@@ -8,6 +8,7 @@ from models.state import State
 import os.path as path
 import unittest
 import pep8
+import os
 
 
 class TestState(unittest.TestCase):
@@ -81,6 +82,7 @@ class TestState(unittest.TestCase):
         my_state.password = "root"
         my_state.save()
         self.assertTrue(path.exists("file.json"))
+        os.remove("file.json")
 
 
 if __name__ == '__main__':

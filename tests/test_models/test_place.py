@@ -8,6 +8,7 @@ from models.place import Place
 import os.path as path
 import unittest
 import pep8
+import os
 
 
 class TestPlace(unittest.TestCase):
@@ -95,6 +96,7 @@ class TestPlace(unittest.TestCase):
         my_place.password = "root"
         my_place.save()
         self.assertTrue(path.exists("file.json"))
+        os.remove("file.json")
 
 
 if __name__ == '__main__':

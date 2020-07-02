@@ -8,6 +8,7 @@ from models.user import User
 import os.path as path
 import unittest
 import pep8
+import os
 
 
 class TestUser(unittest.TestCase):
@@ -75,7 +76,7 @@ class TestUser(unittest.TestCase):
         my_user.password = "root"
         my_user.save()
         self.assertTrue(path.exists("file.json"))
-
+        os.remove("file.json")
 
 if __name__ == '__main__':
     unittest.main()

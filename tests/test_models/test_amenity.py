@@ -8,7 +8,7 @@ from models.amenity import Amenity
 import os.path as path
 import unittest
 import pep8
-
+import os
 
 class TestAmenity(unittest.TestCase):
     """TestAmenity class
@@ -72,6 +72,7 @@ class TestAmenity(unittest.TestCase):
         my_amenity.password = "root"
         my_amenity.save()
         self.assertTrue(path.exists("file.json"))
+        os.remove("file.json")
 
 
 if __name__ == '__main__':

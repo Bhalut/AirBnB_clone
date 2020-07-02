@@ -10,6 +10,7 @@ from time import sleep
 import os.path as path
 import unittest
 import pep8
+import os
 
 
 class TestBaseModel(unittest.TestCase):
@@ -77,6 +78,7 @@ class TestBaseModel(unittest.TestCase):
         model.city = "Medellin"
         model.save()
         self.assertTrue(path.exists("file.json"))
+        os.remove("file.json")
 
     def test_base_model_dict(self):
         """test_base_model_dict test

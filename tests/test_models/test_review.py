@@ -8,6 +8,7 @@ from models.review import Review
 import os.path as path
 import unittest
 import pep8
+import os
 
 
 class TestReview(unittest.TestCase):
@@ -87,6 +88,7 @@ class TestReview(unittest.TestCase):
         my_review.password = "root"
         my_review.save()
         self.assertTrue(path.exists("file.json"))
+        os.remove("file.json")
 
 
 if __name__ == '__main__':

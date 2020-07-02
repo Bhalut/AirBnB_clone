@@ -8,6 +8,7 @@ from models.city import City
 import os.path as path
 import unittest
 import pep8
+import os
 
 
 class TestCity(unittest.TestCase):
@@ -73,6 +74,7 @@ class TestCity(unittest.TestCase):
         my_city.password = "root"
         my_city.save()
         self.assertTrue(path.exists("file.json"))
+        os.remove("file.json")
 
 
 if __name__ == '__main__':
