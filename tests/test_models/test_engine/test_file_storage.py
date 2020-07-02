@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ test_file_storage.py
 
-    Test of file_storage
+    Test of file_storage.py file
 """
 from models import storage
 from models.engine.file_storage import FileStorage
