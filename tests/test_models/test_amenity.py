@@ -3,6 +3,7 @@
 
     test cases
 """
+from models.base_model import BaseModel
 from models.amenity import Amenity
 import os.path as path
 import unittest
@@ -23,6 +24,26 @@ class TestAmenity(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/amenity.py'])
         self.assertEqual(result.total_errors, 0)
+
+    def test_amenity_attributes(self):
+        """test_amenity_attributes test
+
+        Test instance class
+        """
+        my_amenity = Amenity()
+        self.assertTrue(hasattr(my_amenity, "id"))
+        self.assertTrue(hasattr(my_amenity, "created_at"))
+        self.assertTrue(hasattr(my_amenity, "updated_at"))
+        self.assertEqual(my_amenity.name, "")
+
+    def test_amenity_inheritance(self):
+        """test_amenity_inheritance test
+
+        Test instance class
+        """
+        my_amenity = Amenity()
+        self.assertIsInstance(my_amenity, Amenity)
+        self.assertIsInstance(my_amenity, BaseModel)
 
     def test_amenity_instance(self):
         """test_amenity_instance test

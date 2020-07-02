@@ -3,6 +3,7 @@
 
     test cases
 """
+from models.base_model import BaseModel
 from models.review import Review
 import os.path as path
 import unittest
@@ -23,6 +24,41 @@ class TestReview(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/review.py'])
         self.assertEqual(result.total_errors, 0)
+
+    def test_review_attributes(self):
+        """test_review_attributes test
+
+        Test instance class
+        """
+        my_review = Review()
+        self.assertTrue(hasattr(my_review, "id"))
+        self.assertTrue(hasattr(my_review, "created_at"))
+        self.assertTrue(hasattr(my_review, "updated_at"))
+        self.assertEqual(my_review.place_id, "")
+        self.assertEqual(my_review.user_id, "")
+        self.assertEqual(my_review.text, "")
+
+    def test_review_inheritance(self):
+        """test_review_inheritance test
+
+        Test instance class
+        """
+        my_review = Review()
+        self.assertIsInstance(my_review, Review)
+        self.assertIsInstance(my_review, BaseModel)
+
+    def test_review_user(self):
+        """test_review_user test
+
+        Test instance class
+        """
+        my_review = Review()
+        my_review.place_id = "0001"
+        my_review.user_id = "1234"
+        my_review.text = "Nice place"
+        self.assertEqual(my_review.place_id, "0001")
+        self.assertEqual(my_review.user_id, "1234")
+        self.assertEqual(my_review.text, "Nice place")
 
     def test_review_instance(self):
         """test_review_instance test

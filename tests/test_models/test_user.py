@@ -3,6 +3,7 @@
 
     test cases
 """
+from models.base_model import BaseModel
 from models.user import User
 import os.path as path
 import unittest
@@ -23,6 +24,29 @@ class TestUser(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/user.py'])
         self.assertEqual(result.total_errors, 0)
+
+    def test_user_attributes(self):
+        """test_user_attributes test
+
+        Test instance class
+        """
+        my_user = User()
+        self.assertTrue(hasattr(my_user, "id"))
+        self.assertTrue(hasattr(my_user, "created_at"))
+        self.assertTrue(hasattr(my_user, "updated_at"))
+        self.assertEqual(my_user.email, "")
+        self.assertEqual(my_user.password, "")
+        self.assertEqual(my_user.first_name, "")
+        self.assertEqual(my_user.last_name, "")
+
+    def test_user_inheritance(self):
+        """test_user_inheritance test
+
+        Test instance class
+        """
+        my_user = User()
+        self.assertIsInstance(my_user, User)
+        self.assertIsInstance(my_user, BaseModel)
 
     def test_user_instance(self):
         """test_user_instance test

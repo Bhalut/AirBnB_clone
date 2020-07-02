@@ -3,6 +3,7 @@
 
     test cases
 """
+from models.base_model import BaseModel
 from models.city import City
 import os.path as path
 import unittest
@@ -23,6 +24,27 @@ class TestCity(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/city.py'])
         self.assertEqual(result.total_errors, 0)
+
+    def test_city_attributes(self):
+            """test_city_attributes test
+
+            Test instance class
+            """
+            my_city = City()
+            self.assertTrue(hasattr(my_city, "id"))
+            self.assertTrue(hasattr(my_city, "created_at"))
+            self.assertTrue(hasattr(my_city, "updated_at"))
+            self.assertEqual(type(my_city.state_id), str)
+            self.assertEqual(my_city.name, "")
+
+    def test_city_inheritance(self):
+        """test_city_inheritance test
+
+        Test instance class
+        """
+        my_city = City()
+        self.assertIsInstance(my_city, City)
+        self.assertIsInstance(my_city, BaseModel)
 
     def test_city_instance(self):
         """test_city_instance test

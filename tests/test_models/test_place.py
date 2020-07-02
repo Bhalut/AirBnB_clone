@@ -3,6 +3,7 @@
 
     test cases
 """
+from models.base_model import BaseModel
 from models.place import Place
 import os.path as path
 import unittest
@@ -23,6 +24,49 @@ class TestPlace(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['./models/place.py'])
         self.assertEqual(result.total_errors, 0)
+
+    def test_place_attributes(self):
+        """test_place_attributes test
+
+        Test instance class
+        """
+        my_place = Place()
+        self.assertTrue(hasattr(my_place, "id"))
+        self.assertTrue(hasattr(my_place, "created_at"))
+        self.assertTrue(hasattr(my_place, "updated_at"))
+        self.assertEqual(my_place.city_id, "")
+        self.assertEqual(my_place.user_id, "")
+        self.assertEqual(my_place.name, "")
+        self.assertEqual(type(my_place.number_rooms), int)
+        self.assertEqual(type(my_place.max_guest), int)
+
+    def test_place_inheritance(self):
+        """test_place_inheritance test
+
+        Test instance class
+        """
+        my_place = Place()
+        self.assertIsInstance(my_place, Place)
+        self.assertIsInstance(my_place, BaseModel)
+
+    def test_place_amenity(self):
+        """test_place_amenity test
+
+        Test instance class
+        """
+        empty_list = list()
+        my_place = Place()
+        self.assertEqual(my_place.amenity_ids, empty_list)
+
+    def test_place_price_by_night(self):
+        """test_place_price_by_night test
+
+        Test instance class
+        """
+        my_place = Place()
+        my_place.price_by_night = 300
+        self.assertEqual(my_place.price_by_night, 300)
+        self.assertTrue("price_by_night" in my_place.__dict__)
 
     def test_place_instance(self):
         """test_place_instance test

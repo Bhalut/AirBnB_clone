@@ -6,6 +6,7 @@
 
 from models.base_model import BaseModel
 from datetime import datetime
+from time import sleep
 import os.path as path
 import unittest
 import pep8
@@ -42,6 +43,9 @@ class TestBaseModel(unittest.TestCase):
         Test str of class
         """
         my_model = BaseModel()
+        sleep(0.2)
+        my_model.name = "Name"
+        my_model.save()
         self.assertTrue(type(str(my_model)) is str)
         self.assertNotEqual(my_model.created_at, my_model.updated_at)
 
