@@ -43,14 +43,43 @@
 }
 
 .information {
-    height: 80px;
+    display: flex;
+    justify-content: center;
     border-top: 1px solid #DDDDDD;
     border-bottom: 1px solid #DDDDDD;
-    display: flex;
+    height: 80px;
+    margin-top: 35px;
+    margin-bottom: 18px;
 }
 
 .max_guest,
 .number_rooms,
 .number_bathrooms {
+    display: flex;
+    flex-direction: column-reverse;
+    background-repeat: no-repeat;
+    background-position-y: top;
     width: 100px;
+    height: 85%;
+}
+
+.max_guest {
+    background-image: url("./images/icon_group.png");
+}
+
+.number_rooms {
+    background-image: url("./images/icon_bed.png");
+    
+}
+
+.number_bathrooms {
+    background-image: url("./images/icon_bath.png");
+}
+
+.user {
+    margin-bottom: 10px;
+}
+
+.description {
+    min-height: 100px;
 }
