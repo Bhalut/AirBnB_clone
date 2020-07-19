@@ -1,0 +1,16 @@
+header {
+    background-color: white;
+    background-image: url("../images/logo.png");
+    background-position: left 20px center;
+    background-repeat: no-repeat;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        background-size: auto;
+        height: 60px;
+    }
+}
