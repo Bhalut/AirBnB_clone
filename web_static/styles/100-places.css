@@ -64,16 +64,16 @@
 }
 
 .places .max_guest {
-    background-image: url("./images/icon_group.png");
+    background-image: url("../images/icon_group.png");
 }
 
 .places .number_rooms {
-    background-image: url("./images/icon_bed.png");
+    background-image: url("../images/icon_bed.png");
 
 }
 
 .places .number_bathrooms {
-    background-image: url("./images/icon_bath.png");
+    background-image: url("../images/icon_bath.png");
 }
 
 .places .user {
@@ -116,19 +116,19 @@
 }
 
 .places article .amenities ul li:nth-child(1) {
-    background-image: url("./images/icon_tv.png");
+    background-image: url("../images/icon_tv.png");
 }
 
 .places article .amenities ul li:nth-child(2) {
-    background-image: url("./images/icon_wifi.png");
+    background-image: url("../images/icon_wifi.png");
 }
 
 .places article .amenities ul li:nth-child(3) {
-    background-image: url("./images/icon_pets.png");
+    background-image: url("../images/icon_pets.png");
 }
 
 .places article:nth-of-type(2) .amenities ul li {
-    background-image: url("./images/icon_pets.png");
+    background-image: url("../images/icon_pets.png");
 }
 
 .places article .reviews ul li h3 {
